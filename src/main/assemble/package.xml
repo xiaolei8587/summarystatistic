@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/assembly-1.0.0.xsd">
+	<id>package</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<includeBaseDirectory>true</includeBaseDirectory>
+	<fileSets>
+		<fileSet>
+			<directory>target</directory>
+			<outputDirectory>/</outputDirectory>
+			<includes>
+				<include>${project.artifactId}-${project.version}.jar</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>lib</outputDirectory>
+			<scope>runtime</scope>
+			<includes>
+				<!-- config the dependencies -->
+				<!-- format:groupId:artifactId:type:classifier -->
+				<include>com.datastax.spark:spark-cassandra-connector_${cassandra.version}</include>
+				<include>com.google.guava:guava</include>
+				<include>org.apache.cassandra:cassandra-thrift</include>
+				<include>com.datastax.cassandra:cassandra-driver-core</include>
+				<include>org.apache.cassandra:cassandra-clientutil</include>
+				<include>org.apache.cassandra:cassandra-all</include>
+			</includes>
+		</dependencySet>
+	</dependencySets>
+</assembly>
